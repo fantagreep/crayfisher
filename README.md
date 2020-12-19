@@ -1,24 +1,12 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+＃Crayfisher
 
-Things you may want to cover:
+Crayfisherはザリガニ好きのザリガニ好きによるザリガニ好きのためのザリガニ釣りスポット共有アプリです。
 
-* Ruby version
+ふとした時にザリガニを釣りたくなることってありますよね。
+そんな時にはCrayfisherを是非ご利用ください。
 
-* System dependencies
+みなさんから共有されたザリガニ釣りスポットが一目瞭然。
+さらには掲示板でザリガニ釣りのテクニック、穴場、ノウハウを共有することによってあなたのザリガニスキルも爆上がり。つまり良いことづくめ。
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+さあ、今すぐCrayfisherの一員になりましょう！
