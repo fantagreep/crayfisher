@@ -1,0 +1,17 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: 'postgres'
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 4000 -b '0.0.0.0'"
+    volumes:
+      - .:/crayfish
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
