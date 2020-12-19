@@ -1,5 +1,8 @@
 
-version: 2
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2
+
 jobs:
   rubocop:
     docker:
@@ -61,7 +64,7 @@ jobs:
           command: bundle exec rspec
 
   workflows:
-    version: 2
+    version: 2.1
     rubocop_rspec:
       jobs:
         - rubocop
