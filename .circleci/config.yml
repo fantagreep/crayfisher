@@ -13,7 +13,7 @@ jobs:
       - image: circleci/postgres:9.4
         environment:
           POSTGRES_USER: postgres
-          POSTGRES_DB: app_test
+          POSTGRES_DB: crayfish_test
     working_directory: ~/crayfish
     steps:
       - checkout
@@ -42,7 +42,7 @@ jobs:
       - image: circleci/postgres:9.4
         environment:
           POSTGRES_USER: postgres
-          POSTGRES_DB: app_test
+          POSTGRES_DB: crayfish_test
     working_directory: ~/crayfish
     steps:
       - checkout
