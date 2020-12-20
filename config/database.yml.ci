@@ -4,6 +4,6 @@ test:
   pool: 5
   username: postgres
   port: 4000
-  host: '127.0.0.1'
+  host: <%= ENV['POSTGRES_HOST'] || 'db' %>
   database: crayfish_test
   password: password
