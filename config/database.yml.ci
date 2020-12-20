@@ -5,4 +5,4 @@ test:
   username: 'root'
   port: 4000
   host: localhost
-  database: ci_test
+  database: crayfish_test
