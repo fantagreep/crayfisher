@@ -42,6 +42,7 @@ jobs:
         environment:
           POSTGRES_USER: postgres
           POSTGRES_DB: crayfish_test
+          POSTGRES_PASSWORD: password
     working_directory: ~/crayfish
     steps:
       - checkout
