@@ -1,8 +1,9 @@
 test:
   adapter: postgresql
-  encoding: utf8
+  encoding: unicode
   pool: 5
-  username: 'root'
+  username: postgres
   port: 4000
   host: '127.0.0.1'
   database: ci_test
+  password: password
