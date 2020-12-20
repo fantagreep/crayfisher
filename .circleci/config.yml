@@ -13,7 +13,7 @@ jobs:
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: crayfish_test
-          POSTGRES_PASSWORD: password
+          POSTGRES_PASSWORD: posetgres
     steps:
       - checkout
       - restore_cache:
@@ -43,7 +43,7 @@ jobs:
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: crayfish_test
-          POSTGRES_PASSWORD: password
+          POSTGRES_PASSWORD: postgres
     steps:
       - checkout
       - restore_cache:
@@ -72,7 +72,7 @@ jobs:
 orbs:
   ruby: circleci/ruby@0.1.2
 workflows:
-  version: 2.1
+  version: 2
   build:
     jobs:
       - rubocop
