@@ -1,9 +1,8 @@
 test:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   pool: 5
-  username: postgres
+  username: 'root'
   port: 4000
-  host: <%= ENV['POSTGRES_HOST'] || 'db' %>
-  database: crayfish_test
-  password: password
+  host: '127.0.0.1'
+  database: ci_test
