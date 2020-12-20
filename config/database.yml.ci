@@ -5,5 +5,5 @@ test:
   username: postgres
   port: 4000
   host: '127.0.0.1'
-  database: ci_test
+  database: crayfish_test
   password: password
