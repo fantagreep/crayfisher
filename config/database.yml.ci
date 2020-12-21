@@ -1,8 +1,8 @@
 test:
   adapter: postgresql
   encoding: utf8
-  pool: 5
-  username: 'root'
-  port: 4000
-  host: localhost
+  host: db
+  username: postgres
+  password: postgres
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   database: crayfish_test
