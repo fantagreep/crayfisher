@@ -4,6 +4,6 @@ test:
   host: '127.0.0.1'
   username: postgres
   password: postgres
-  port: 3306
+  port: 4000
   pool: 5
   database: crayfish_test
