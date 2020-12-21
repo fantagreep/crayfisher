@@ -1,2 +1,2 @@
-RSpec.describe StaticPagesHelper, type: :helper do
-end
+# RSpec.describe StaticPagesHelper, type: :helper do
+# end

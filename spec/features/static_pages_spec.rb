@@ -1,4 +1,3 @@
-
 RSpec.feature 'StaticPages', type: :feature do
   scenario 'Home' do
     visit root_url
