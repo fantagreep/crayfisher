@@ -4,7 +4,7 @@ jobs:
   rubocop:
     working_directory: ~/crayfish
     docker:
-      - image: circleci/ruby:2.6.3-node-browsers-legacy
+      - image: circleci/ruby:2.5.8-node-browsers-legacy
         environment:
           RAILS_ENV: test
           PGHOST: 127.0.0.1
@@ -34,7 +34,7 @@ jobs:
   rspec:
     working_directory: ~/crayfish
     docker:
-      - image: circleci/ruby:2.6.3-node-browsers-legacy
+      - image: circleci/ruby:2.5.8-node-browsers-legacy
         environment:
           RAILS_ENV: test
           PGHOST: 127.0.0.1
