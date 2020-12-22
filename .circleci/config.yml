@@ -60,6 +60,7 @@ jobs:
           key: rails-demo-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
+      - run: mv config/database.yml.ci config/database.yml 
       - run:
           name: データベースのセットアップ
           command: |

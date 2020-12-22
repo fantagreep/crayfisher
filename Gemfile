@@ -21,9 +21,12 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0.1'
   gem 'spring-commands-rspec'
+  gem 'factory_bot_rails'
 end
 
 group :development do
+  gem 'annotate'
+  gem 'bullet'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'

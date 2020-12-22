@@ -4,7 +4,7 @@ inherit_from:
 
 # 文字数の上限を150字に変更
 Metrics/LineLength:
-  Max: 130
+  Max: 150
 
 # include is used at the top level. Use inside class or module.を許可
 Style/MixinUsage:
