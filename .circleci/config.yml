@@ -1,114 +1,82 @@
 
-version: 2.1
-orbs:
-  ruby: circleci/ruby@0.1.2
-
+version: 2
 jobs:
-  build:
-    docker:
-      - image: circleci/ruby:2.6.3-stretch-node
-    executor: ruby/default
-    steps:
-      - checkout
-      - run:
-          name: Which bundler?
-          command: bundle -v
-      - ruby/bundle-install
-
-  rspec:
-    working_directory: ~/crayfish
-    docker:
-      - image: circleci/ruby
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run:
-          name: Setup environment variable
-          command: |
-            echo "export COMPOSE_FILE=docker-compose.ci.yml" >> $BASH_ENV
-      - run:
-          name: Start containers and verify it is working
-          command: |
-            set -x
-            docker-compose up -d
-            docker exec crayfish_app curl -4 --retry 10 --retry-delay 3 --retry-connrefused http://localhost:4000
-      - run:
-          name: Setup database
-          command: |
-            mv config/database.yml.ci config/database.yml
-      - run:
-          name: Run rspec
-          command: docker-compose exec crayfish rspec
-
   rubocop:
     working_directory: ~/crayfish
     docker:
-      - image: circleci/ruby:2.5.1
+      - image: circleci/ruby:2.5.8-node-browsers-legacy
+        environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
+      - image: circleci/postgres:9.4
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: crayfish_test
+          POSTGRES_PASSWORD: posetgres
     steps:
       - checkout
       - restore_cache:
           keys:
-            - gemfiles-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-            - gemfiles-{{ .Branch }}-
-            - gemfiles-master-
-      - run: bundle config --local path vendor/bundle
-      - run:
-          name: bundle install
-          command: bundle check || bundle install --jobs=8 --clean
-      - run:
-          name: Run rubocop
-          command: bundle exec rubocop --parallel
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - run: yarn install
       - save_cache:
-          key: gemfiles-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
-            - vendor/bundle
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      # Rubocop
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop
 
-  heroku_deploy:
+  rspec:
     working_directory: ~/crayfish
     docker:
-      - image: sue445/heroku-cli
+      - image: circleci/ruby:2.5.8-node-browsers-legacy
+        environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
+      - image: circleci/postgres:9.4
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: crayfish_test
+          POSTGRES_PASSWORD: postgres
     steps:
       - checkout
-      - build-tools/install-ci-tools
-      - jq/install
+      - restore_cache:
+          keys:
+            - rails-demo-{{ checksum "Gemfile.lock" }}
+            - rails-demo-
+      # 依存関係をバンドル インストールします
       - run:
-          name: Identify who I am
-          command: echo 'export MY_EMAIL=`heroku auth:whoami | tail -n 1`' >> $BASH_ENV
+          name: 依存関係のインストール
+          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
+      - run: sudo apt install -y postgresql-client || true
+      # バンドル キャッシュを保存します
+      - save_cache:
+          key: rails-demo-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - run: mv config/database.yml.ci config/database.yml 
       - run:
-          name: Identify Heroku app names to destroy
-          command: echo 'export APP_NAMES_TO_REMOVE=`heroku apps --json | jq -r "map(select(.owner.email == "\"$MY_EMAIL\"" and (.name | contains(\"crayfish\")))) | sort_by(.updated_at) | reverse | .[5:] | .[].name"`' >> $BASH_ENV
-      - run:
-          name: Delete old apps if needed
-          command: for app_name in $APP_NAMES_TO_REMOVE; do heroku apps:destroy -a $app_name -c $app_name; done
-      - run:
-          name: Define Heroku app name to create
-          command: timestamp=`date +%Y%m%d%H%M%S` && echo "export HEROKU_APP_NAME=crayfish-$timestamp" >> $BASH_ENV
-      - run:
-          name: Create fresh Heroku app
-          command: heroku apps:create $HEROKU_APP_NAME --addons=jawsdb:kitefin
-      - run:
-          name: Deploy
-          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
-      - run:
-          name: Run post-deploy tasks
+          name: データベースのセットアップ
           command: |
-            heroku config:set AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-            heroku config:set AWS_HOST_NAME=$AWS_HOST_NAME
-            heroku config:set AWS_REGION=$AWS_REGION
-            heroku config:set AWS_BUCKET=$AWS_BUCKET
-            heroku run bin/rails db:migrate
-            heroku run bin/rails runner db/seeds.rb
+            bundle exec rake db:create
+      # Rspec
+      - run:
+          name: Rspec
+          command: bundle exec rspec
 
-  orbs:
-    build-tools: circleci/build-tools@2.6.3
-    jq: circleci/jq@1.9.1
-  workflows:
-    version: 2.1
-    build:
-      jobs:
-        - rspec
-        - rubocop
-        - heroku_deploy:
-            requires:
-              - rspec
-              - rubocop
+orbs:
+  ruby: circleci/ruby@0.1.2
+workflows:
+  version: 2
+  build:
+    jobs:
+      - rubocop
+      - rspec:
+          requires:
+            - rubocop

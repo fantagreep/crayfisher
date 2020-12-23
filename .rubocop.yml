@@ -3,8 +3,8 @@ inherit_from:
   - .rubocop_todo.yml
 
 # 文字数の上限を150字に変更
-LineLength:
-  Max: 130
+Metrics/LineLength:
+  Max: 150
 
 # include is used at the top level. Use inside class or module.を許可
 Style/MixinUsage:
