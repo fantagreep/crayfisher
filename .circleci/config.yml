@@ -60,7 +60,7 @@ jobs:
           key: rails-demo-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-      - run: mv config/database.yml.ci config/database.yml 
+      - run: mv config/database.yml.ci config/database.yml
       - run:
           name: データベースのセットアップ
           command: |
@@ -70,6 +70,27 @@ jobs:
           name: Rspec
           command: bundle exec rspec
 
+  heroku_deploy:
+    working_directory: ~/crayfish
+    docker:
+      - image: sue445/heroku-cli
+    steps:
+      - checkout
+      - build-tools/install-ci-tools
+      - jq/install
+      - run:
+          name: Deploy
+          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+      - run:
+          name: Run post-deploy tasks
+          command: |
+            heroku config:set AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+            heroku config:set AWS_HOST_NAME=$AWS_HOST_NAME
+            heroku config:set AWS_REGION=$AWS_REGION
+            heroku config:set AWS_BUCKET=$AWS_BUCKET
+            heroku run bin/rails db:migrate
+            heroku run bin/rails db:seed
+
 orbs:
   ruby: circleci/ruby@0.1.2
 workflows:
@@ -77,6 +98,8 @@ workflows:
   build:
     jobs:
       - rubocop
-      - rspec:
+      - rspec
+      - heroku_deploy:
           requires:
+            - rspec
             - rubocop
