@@ -71,14 +71,13 @@ jobs:
           command: bundle exec rspec
 
   heroku_deploy:
-    working_directory: ~/crayfish
     docker:
       - image: sue445/heroku-cli
     steps:
       - checkout
       - run:
           name: Deploy
-          command: git push https://git.heroku.com/crayfisher.git master
+          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
       - run:
           name: Run post-deploy tasks
           command: |
@@ -91,6 +90,7 @@ jobs:
 
 orbs:
   ruby: circleci/ruby@0.1.2
+  heroku: circleci/heroku@1.0.0
 workflows:
   version: 2
   build:
@@ -101,3 +101,6 @@ workflows:
           requires:
             - rspec
             - rubocop
+          filters:
+            branches:
+              only: master
