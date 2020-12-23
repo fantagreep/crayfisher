@@ -16,6 +16,7 @@ gem 'slim-rails'
 gem 'html2slim'
 gem 'bootstrap-sass'
 gem 'rubocop-airbnb'
+gem 'aws-sdk-s3', '1.46.0', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
