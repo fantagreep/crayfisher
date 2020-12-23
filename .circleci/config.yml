@@ -81,8 +81,8 @@ jobs:
       - run:
           name: Run post-deploy tasks
           command: |
-            heroku config:set AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-            heroku config:set AWS_HOST_NAME=$AWS_HOST_NAME
+            heroku config:set AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+            heroku config:set AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
             heroku config:set AWS_REGION=$AWS_REGION
             heroku config:set AWS_BUCKET=$AWS_BUCKET
             heroku run bin/rails db:migrate
@@ -101,6 +101,3 @@ workflows:
           requires:
             - rspec
             - rubocop
-          filters:
-            branches:
-              only: master
