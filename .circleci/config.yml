@@ -76,8 +76,6 @@ jobs:
       - image: sue445/heroku-cli
     steps:
       - checkout
-      - build-tools/install-ci-tools
-      - jq/install
       - run:
           name: Deploy
           command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
@@ -93,8 +91,6 @@ jobs:
 
 orbs:
   ruby: circleci/ruby@0.1.2
-  build-tools: circleci/build-tools@2.6.3
-  jq: circleci/jq@1.9.1
 workflows:
   version: 2
   build:
