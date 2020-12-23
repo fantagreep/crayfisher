@@ -81,6 +81,7 @@ jobs:
       - run:
           name: Run post-deploy tasks
           command: |
+            heroku git:remote -a $HEROKU_APP_NAME
             heroku config:set AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
             heroku config:set AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
             heroku config:set AWS_REGION=$AWS_REGION
