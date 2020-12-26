@@ -6,8 +6,9 @@ html
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = render 'layouts/shim'
   body
-  .app-title.navbar.navbar-expand-md.navbar-light.bg-light
-    .navbar-brand Crayfisher
-  .container
-    = yield
+    .container
+      = render 'layouts/header'
+      = yield
+      = render 'layouts/footer'
