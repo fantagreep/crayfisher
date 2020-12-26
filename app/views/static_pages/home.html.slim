@@ -6,3 +6,28 @@
      br
      | ユーザーとザリガニ釣りスポットを共有して素敵なザリガニライフを送りましょう！
   = link_to "今すぐ登録する！", signup_path, class: "btn btn-lg btn-primary"
+  .map-wrapper
+    #map.gmap
+
+javascript:
+  // Mapオブジェクト生成
+  var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+
+  // Markerを生成
+  var marker = new google.maps.Marker({
+      map: map,
+      position: new google.maps.LatLng(35.69, 129.75),
+  });
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -34.397, lng: 150.644},
+      zoom: 8
+    });
+  }
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNAZ8ULE4YS1M1GHdpjPZqSu_s2WUPh0E&callback=initMap" async defer></script>
+<script src="infobox.js"></script>
