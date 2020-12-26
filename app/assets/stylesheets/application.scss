@@ -100,7 +100,8 @@ footer {
 
 /* home */
 
-.map_wrapper {
+.map-wrapper {
+  margin-top: 30px;
   position: relative;
   width:100%;
   padding-top:56.25%;
@@ -112,9 +113,4 @@ footer {
     top: 0;
     left: 0;
   }
-}
-
-#map {
-  height: 400px;
-  width: 600px;
 }
