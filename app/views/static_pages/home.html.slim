@@ -10,22 +10,15 @@
     #map.gmap
 
 javascript:
-  // Mapオブジェクト生成
-  var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-  });
-
-  // Markerを生成
-  var marker = new google.maps.Marker({
-      map: map,
-      position: new google.maps.LatLng(35.69, 129.75),
-  });
+  var map;
 
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: -34.397, lng: 150.644},
       zoom: 8
+    });
+    map.addListener('click', function(e){
+      this.panTo(e.latLng);
     });
   }
 
