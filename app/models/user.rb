@@ -4,6 +4,7 @@
 #
 #  id              :bigint           not null, primary key
 #  email           :string           not null
+#  image           :string
 #  name            :string           not null
 #  password_digest :string           not null
 #  created_at      :datetime         not null
@@ -19,5 +20,6 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   validates :email, presence: true, uniqueness: true, length: { maximum: 250 }, format: { with: VALID_EMAIL_REGEX }
   validates :password, presence: true, length: { minimum: 6 }
+  mount_uploader :image, ImageUploader
   has_secure_password
 end
