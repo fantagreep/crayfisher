@@ -1,6 +1,6 @@
 RSpec.feature 'Users', type: :feature do
   scenario "user successfully signs up with valid infomation" do
-    visit signup_path
+    visit new_user_registration_path
     expect do
       fill_in "名前", with: "Example"
       fill_in "メールアドレス", with: "test@example.com"
@@ -10,8 +10,9 @@ RSpec.feature 'Users', type: :feature do
     end.to change(User, :count).by(1)
     expect(current_path).to eq root_path
   end
+
   scenario "user should not sign up with invalid infomation" do
-    visit signup_path
+    visit new_user_registration_path
     expect do
       fill_in "名前", with: ""
       fill_in "メールアドレス", with: "test@example.com.com"

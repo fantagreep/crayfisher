@@ -1,3 +1,4 @@
+
 inherit_from:
   - .rubocop_airbnb.yml
   - .rubocop_todo.yml
@@ -5,6 +6,8 @@ inherit_from:
 # 文字数の上限を150字に変更
 Metrics/LineLength:
   Max: 150
+  Exclude:
+    - 'config/routes.rb'
 
 # include is used at the top level. Use inside class or module.を許可
 Style/MixinUsage:
