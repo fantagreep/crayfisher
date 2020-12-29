@@ -20,6 +20,9 @@ gem 'aws-sdk-s3', '1.46.0', require: false
 gem 'bcrypt', '3.1.13'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'devise'
+gem 'webpacker'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -4,11 +4,11 @@ h1 ユーザー登録
 
 .row
   .col-md-6.col-md-offset-3
-    = form_with(model: @user, local: true) do |f|
-      = render 'shared/error_messages'
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render 'shared/error_messages', resource: resource
 
       = f.label :name, "名前"
-      = f.text_field :name, class: 'form-control'
+      = f.text_field :name, autofocus: true, class: 'form-control'
 
       = f.label :email, "メールアドレス"
       = f.email_field :email, class: 'form-control'
@@ -17,6 +17,11 @@ h1 ユーザー登録
       = f.file_field :image
 
       = f.label :password, "パスワード"
+      - if @minimum_password_length
+        em
+          | (
+          = @minimum_password_length
+          |  文字以上で入力してください)
       = f.password_field :password, class: 'form-control'
 
       = f.label :password_confirmation, "パスワード（確認）"
@@ -26,3 +31,4 @@ h1 ユーザー登録
 
 = link_to "利用規約", "#", class: "btn"
 = link_to "プライバシーポリシー", "#", class: "btn"
+= render "devise/shared/links"

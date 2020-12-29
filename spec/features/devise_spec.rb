@@ -1,6 +1,6 @@
-RSpec.feature 'Users', type: :feature do
-  scenario "user successfully signs up with valid infomation" do
-    visit new_user_registration_path
+RSpec.feature 'Devise', type: :feature do
+  scenario "user successfully login with valid infomation" do
+    visit new_user_session_path
     expect do
       fill_in "名前", with: "Example"
       fill_in "メールアドレス", with: "test@example.com"
@@ -11,8 +11,8 @@ RSpec.feature 'Users', type: :feature do
     expect(current_path).to eq root_path
   end
 
-  scenario "user should not sign up with invalid infomation" do
-    visit new_user_registration_path
+  scenario "user should not login with invalid infomation" do
+    visit new_user_session_path
     expect do
       fill_in "名前", with: ""
       fill_in "メールアドレス", with: "test@example.com.com"

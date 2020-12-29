@@ -2,10 +2,14 @@
 .center.jumbotron
   h1 Craifisherへようこそ！
   h2
-     | Crayfisherはザリガニ好きのザリガニ好きによるザリガニ好きのためのザリガニ釣りスポット共有アプリです。
-     br
-     | ユーザーとザリガニ釣りスポットを共有して素敵なザリガニライフを送りましょう！
-  = link_to "今すぐ登録する！", signup_path, class: "btn btn-lg btn-primary"
+    | Crayfisherはザリガニ好きのザリガニ好きによるザリガニ好きのためのザリガニ釣りスポット共有アプリです。
+    br
+    | ユーザーとザリガニ釣りスポットを共有して素敵なザリガニライフを送りましょう！
+  = current_user&.name || "NA"
+  p /
+  = current_user&.id || "NA"
+  br
+  = link_to "今すぐ登録する！", new_user_registration_path, class: "btn btn-lg btn-primary"
   .map-wrapper
     #map.gmap
 
