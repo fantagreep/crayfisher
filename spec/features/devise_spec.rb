@@ -1,24 +1,34 @@
 RSpec.feature 'Devise', type: :feature do
-  scenario "user successfully login with valid infomation" do
-    visit new_user_session_path
-    expect do
-      fill_in "名前", with: "Example"
-      fill_in "メールアドレス", with: "test@example.com"
-      fill_in "パスワード", with: "test123"
-      fill_in "パスワード（確認）", with: "test123"
-      click_button "登録する"
-    end.to change(User, :count).by(1)
-    expect(current_path).to eq root_path
+  before do
+    create(:user, email: "test@example.com")
   end
 
-  scenario "user should not login with invalid infomation" do
+  scenario "user successfully login with valid infomation" do
     visit new_user_session_path
-    expect do
-      fill_in "名前", with: ""
-      fill_in "メールアドレス", with: "test@example.com.com"
-      fill_in "パスワード", with: "test"
-      fill_in "パスワード（確認）", with: "test"
-      click_button "登録する"
-    end.not_to change(User, :count)
+    expect(page).to have_link 'ログイン'
+    expect(page).to have_link '新規登録'
+    expect(page).to have_no_link 'プロフィール'
+    expect(page).to have_no_link 'ログアウト'
+    fill_in "メールアドレス", with: "test@example.com"
+    fill_in "パスワード", with: "foobar"
+    click_button "ログイン"
+    expect(current_path).to eq root_path
+    expect(page).to have_no_link 'ログイン'
+    expect(page).to have_no_link '新規登録'
+    expect(page).to have_link 'プロフィール'
+    expect(page).to have_link 'ログアウト'
+    click_on "ログアウト"
+  end
+
+  scenario "user should not login with wrong password" do
+    visit new_user_session_path
+    fill_in "メールアドレス", with: "test@example.com"
+    fill_in "パスワード", with: "barfoo"
+    click_button "ログイン"
+    expect(current_path).to eq new_user_session_path
+    expect(page).to have_link 'ログイン'
+    expect(page).to have_link '新規登録'
+    expect(page).to have_no_link 'プロフィール'
+    expect(page).to have_no_link 'ログアウト'
   end
 end
