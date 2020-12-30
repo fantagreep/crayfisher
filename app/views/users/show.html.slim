@@ -4,6 +4,6 @@
   aside.col-md-4
     section.user_info
       h1
-        -if @user&.image
+        -if @user.image.attached?
           = image_tag @user.image
         = @user.name
