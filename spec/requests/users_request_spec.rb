@@ -5,4 +5,11 @@ RSpec.describe "Users", type: :request do
       expect(response).to have_http_status(:success)
     end
   end
+
+  describe "GET /users/edit" do
+    it "redirects edit when not logged in" do
+      get edit_user_registration_path
+      expect(response).to redirect_to new_user_session_path
+    end
+  end
 end

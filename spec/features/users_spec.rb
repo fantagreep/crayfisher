@@ -8,7 +8,6 @@ RSpec.feature 'Users', type: :feature do
       fill_in "パスワード（確認）", with: "test123"
       click_button "登録する"
     end.to change(User, :count).by(1)
-    expect(current_path).to eq root_path
   end
 
   scenario "user should not sign up with invalid infomation" do

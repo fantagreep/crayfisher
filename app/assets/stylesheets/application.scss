@@ -156,3 +156,35 @@ input {
   width: auto;
   margin-left: 0;
 }
+
+/* edit */
+
+.edit-account {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.edit-password-btn {
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.delete-btn {
+  color: red;
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
