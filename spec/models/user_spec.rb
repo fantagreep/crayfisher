@@ -86,4 +86,12 @@ RSpec.describe User, type: :model do
     duplicate_user = user.dup
     expect(duplicate_user).not_to be_valid
   end
+
+  it "destroys posts with user" do
+    user = create(:user)
+    user.posts.create!(content: "Wow")
+    expect do
+      user.destroy
+    end.to change(Post, :count).by(-1)
+  end
 end

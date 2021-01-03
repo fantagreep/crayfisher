@@ -5,5 +5,11 @@
     section.user_info
       h1
         -if @user.image.attached?
-          = image_tag @user.image
+          = image_tag @user.image, class: "icon"
         = @user.name
+  .col-md-8
+    - if @user.posts.any?
+      h3 投稿
+      ol.posts
+        = render @posts, user: @user
+      = will_paginate @posts

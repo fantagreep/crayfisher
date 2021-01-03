@@ -1,0 +1,6 @@
+= link_to current_user do
+  -if current_user.image.attached?
+    = image_tag current_user.image, class: "icon"
+  = current_user.name
+span
+  = "#{current_user.posts.count}投稿"

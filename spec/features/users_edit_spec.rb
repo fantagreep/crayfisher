@@ -1,6 +1,5 @@
 RSpec.feature 'UsersEdit', type: :feature do
   given(:user) { create(:user) }
-  given(:other_user) { create(:user, email: "other_user@example.com") }
 
   before do
     create(:user, email: "test@example.com")

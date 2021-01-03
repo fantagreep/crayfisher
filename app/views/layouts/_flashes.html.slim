@@ -1,0 +1,3 @@
+- flash.each do |message_type, message|
+  .alert class="alert alert-#{message_type}, alert-#{bootstrap_alert(message_type)}"
+    = message

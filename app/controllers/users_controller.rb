@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   before_action :correct_user, only: [:password_edit, :password_update]
-  before_action :logged_in_user, only: [:password_edit, :password_update]
+  before_action :user_signed_in?, only: [:password_edit, :password_update]
   protect_from_forgery :except => [:password_update]
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.paginate(page: params[:page])
   end
 
   def new

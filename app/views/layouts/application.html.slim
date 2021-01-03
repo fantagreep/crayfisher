@@ -9,9 +9,7 @@ html
     = render 'layouts/shim'
   body
     .container
-      - flash.each do |message_type, message|
-        .alert class="alert-#{message_type}"
-          = message
+      = render 'layouts/flashes'
       = render 'layouts/header'
       = yield
       = render 'layouts/footer'

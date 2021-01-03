@@ -12,3 +12,7 @@ Metrics/LineLength:
 # include is used at the top level. Use inside class or module.を許可
 Style/MixinUsage:
   Enabled: false
+
+Airbnb/DefaultScope:
+  Exclude:
+    - 'app/models/post.rb'
