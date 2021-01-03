@@ -29,6 +29,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, length: { maximum: 250 }, format: { with: VALID_EMAIL_REGEX }
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   has_one_attached :image
+  has_many :posts, dependent: :destroy
 
   def update_with_password(params, *options)
     params.delete(:current_password)
@@ -42,5 +43,9 @@ class User < ApplicationRecord
 
     clean_up_passwords
     result
+  end
+
+  def feed
+    Post.where("user_id = ?", id).includes([:user, { picture_attachment: :blob }])
   end
 end

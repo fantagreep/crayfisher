@@ -23,12 +23,13 @@
 #      rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
+  root 'static_pages#home'
+  get '/about', to: 'static_pages#about'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
-  root 'static_pages#home'
-  get '/about', to: 'static_pages#about'
   resources :users, only: [:show]
+  resources :posts, only: [:create, :destroy]
   get "users/:id/password_edit", to: "users#password_edit", as: 'password_edit'
   patch "users/:id/password_update", to: "users#password_update", as: 'password_update'
 end
