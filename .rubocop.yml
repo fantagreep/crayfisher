@@ -13,6 +13,7 @@ Metrics/LineLength:
 Style/MixinUsage:
   Enabled: false
 
+# ポストモデルのdefault scopeを許可（並び替え）
 Airbnb/DefaultScope:
   Exclude:
     - 'app/models/post.rb'
