@@ -46,6 +46,18 @@ class User < ApplicationRecord
   end
 
   def feed
-    Post.where("user_id = ?", id).includes([:user, { picture_attachment: :blob }])
+    Post.where("user_id = ?", id).includes([:user, { picture_attachment: :blob }, :spot])
+  end
+
+  def nav
+    image&.variant(gravity: :center, resize: "20x20^", crop: "20x20+0+0")
+  end
+
+  def icon
+    image&.variant(gravity: :center, resize: "50x50^", crop: "50x50+0+0")
+  end
+
+  def avator
+    image&.variant(gravity: :center, resize: "100x100^", crop: "100x100+0+0")
   end
 end

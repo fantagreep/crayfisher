@@ -1,7 +1,5 @@
 RSpec.feature 'Devise', type: :feature do
-  before do
-    create(:user, email: "test@example.com")
-  end
+  given!(:user) { create(:user, email: "test@example.com") }
 
   scenario "user successfully login with valid infomation" do
     visit new_user_session_path
@@ -15,7 +13,7 @@ RSpec.feature 'Devise', type: :feature do
     expect(current_path).to eq root_path
     expect(page).to have_no_link 'ログイン'
     expect(page).to have_no_link '新規登録'
-    expect(page).to have_link 'プロフィール'
+    expect(page).to have_link user.name
     expect(page).to have_link 'ログアウト'
     click_on "ログアウト"
   end

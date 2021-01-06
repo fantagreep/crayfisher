@@ -2,6 +2,14 @@ class PostsController < ApplicationController
   before_action :user_signed_in?, only: [:create, :destroy]
   before_action :correct_user, only: :destroy
 
+  def show
+    @post = Post.find(params[:id])
+    @lat = @post.spot.latitude
+    @lng = @post.spot.longitude
+    gon.lat = @lat
+    gon.lng = @lng
+  end
+
   def create
     @post = current_user.posts.build(post_params)
     @post.picture.attach(params[:post][:picture])
@@ -24,7 +32,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :picture)
+    params.require(:post).permit(:title, :content, :picture, spot_attributes: [:address])
   end
 
   def correct_user

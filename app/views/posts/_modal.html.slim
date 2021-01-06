@@ -1,0 +1,13 @@
+.modal.fade id="exampleModalLong-#{post.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true"&times;
+      .modal-body
+        .show
+          .show__address
+            = post.content
+          .show__maps id="map" style="height: 320px; width: 400px;"
+    .modal-footer
+    button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる

@@ -4,6 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  content    :text
+#  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :bigint
@@ -21,6 +22,8 @@ require "mini_magick"
 
 class Post < ApplicationRecord
   belongs_to :user
+  has_one :spot, dependent: :destroy
+  accepts_nested_attributes_for :spot
   has_one_attached :picture
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
@@ -35,6 +38,6 @@ class Post < ApplicationRecord
                       }
 
   def display_image
-    picture.variant(gravity: :center, resize: "500x500^", crop: "500x500+0+0")
+    picture.variant(gravity: :center, resize: "300x300^", crop: "500x500+0+0")
   end
 end

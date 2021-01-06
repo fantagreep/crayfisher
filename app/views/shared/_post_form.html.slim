@@ -1,18 +1,23 @@
-= form_with(model: @post, local: true) do |f|
-  = render 'shared/error_messages', object: f.object
-  .field
-    = f.text_area :content, placeholder: "テキストを入力してください", id: "post-content"
-    span.image
-      = f.file_field :picture, id: "picture"
-  = f.submit "投稿する", class: "btn btn-primary", accept: "image/jpeg,image/gif,image/png"
+= form_with(model: @post, local: true, multipart: true) do |f|
+  .spot
+    = f.fields_for :spot do |s|
+      = s.label :address, "レビュー場所(Google Mapで検索)", class: 'spot__title'
+      .search-form
+        = s.text_field :address, placeholder: "スポットを入力", id: "address", class: 'spot__text'
+        button onclick="codeAddress()" type="button"
+          i class="fas fa-search"
+      = f.text_area :content, placeholder: "テキストを入力してください", id: "post-content"
+      span.image
+        = f.file_field :picture, id: "picture"
+    = f.submit "投稿する", class: "btn btn-primary", accept: "image/jpeg,image/gif,image/png"
 
 javascript:
   <script type="text/javascript">
-  $("#micropost_image").bind("change", function() {
-    var size_in_megabytes = this.files[0].size/1024/1024;
-    if (size_in_megabytes > 5) {
-      alert("Maximum file size is 5MB. Please choose a smaller file.");
-      $("#micropost_image").val("");
-    }
-  });
+    $("#micropost_image").bind("change", function() {
+      var size_in_megabytes = this.files[0].size/1024/1024;
+      if (size_in_megabytes > 5) {
+        alert("Maximum file size is 5MB. Please choose a smaller file.");
+        $("#micropost_image").val("");
+      }
+    });
   </script>

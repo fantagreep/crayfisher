@@ -17,4 +17,5 @@ h2
           span ログイン状態を保持する
       .actions
         = f.submit "ログイン"
-    = render "devise/shared/links"
+    .center
+      = link_to "新規登録はこちら", new_user_registration_path, class: "btn"

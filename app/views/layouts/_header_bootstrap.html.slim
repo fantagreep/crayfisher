@@ -1,0 +1,25 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  = link_to "Crayfisher", root_path, id: "logo", class: "navbar-brand"
+  button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav
+      li.nav-item
+        = link_to "Home", root_path, class: "nav-link"
+      - if user_signed_in?
+        li.nav-item
+          = link_to "設定", edit_user_registration_path, class: "nav-link"
+        li.nav-item
+          = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link"
+        li.nav-item
+          = link_to current_user, class: "nav-link" do
+            = image_tag current_user.nav if current_user.image.attached?
+            span.mx-3
+              = current_user.name
+      - else
+        li.nav-item
+          = link_to "Crayfisherとは？", about_path, class: "nav-link"
+        li.nav-item
+          = link_to "ログイン", new_user_session_path, class: "nav-link"
+        li.nav-item
+          = link_to "新規登録", new_user_registration_path, class: "nav-link"

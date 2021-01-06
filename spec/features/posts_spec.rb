@@ -13,6 +13,7 @@ RSpec.feature 'Post', type: :feature do
   scenario "user successfully posts with content" do
     visit root_path
     expect do
+      fill_in "address", with: "Example"
       fill_in "post-content", with: "Example"
       click_button "投稿する"
     end.to change(Post, :count).by(1)

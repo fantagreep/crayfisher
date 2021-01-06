@@ -28,6 +28,10 @@ gem 'bootstrap-will_paginate', '1.0.0'
 gem 'active_storage_validations', '0.8.2'
 gem 'image_processing',           '1.9.3'
 gem 'mini_magick'
+gem "gmaps4rails"
+gem "geocoder"
+gem "gon"
+gem "dotenv-rails"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

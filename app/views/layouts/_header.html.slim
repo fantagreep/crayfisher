@@ -2,19 +2,20 @@ header.navbar.navbar-fixed-top.navbar-inverse
   .container
     = link_to "Crayfisher", root_path, id: "logo"
     nav
-      ul.nav.navbar-nav.navbar-right
-        li = link_to "Home",  root_path
-
+      ul.nav.navbar-nav.navbar-right.navbar-light.collapse.navbar-collapse#responsiveMenu
+        li.nav-item = link_to "Home",  root_path
+        button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#responsiveMenu" aria-controls="responsiveMenu" aria-expanded="false" aria-label="Toggle navigation"
+          i class="fas fa-bars navbar-toggler-icon"
         - if user_signed_in?
           li.dropdown
             a.dropdown-toggle data-toggle="dropdown"
               | Account
               b.caret
             ul.dropdown-menu
-              li = link_to "プロフィール", current_user
-              li = link_to "設定", edit_user_registration_path
+              li.nav-item.nav-item-drop = link_to "プロフィール", current_user
+              li.nav-item.nav-item-drop  = link_to "設定", edit_user_registration_path
               li.divider
-              li = link_to "ログアウト", destroy_user_session_path, method: :delete
+              li.nav-item.nav-item-drop = link_to "ログアウト", destroy_user_session_path, method: :delete
         - else
           li = link_to "Crayfisherとは？", about_path
           li = link_to "ログイン", new_user_session_path
