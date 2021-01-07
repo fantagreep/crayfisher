@@ -12,4 +12,18 @@ RSpec.describe "StaticPages", type: :request do
       expect(response).to have_http_status(:success)
     end
   end
+
+  describe "GET /terms" do
+    it "returns http success" do
+      get terms_url
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET /policy" do
+    it "returns http success" do
+      get policy_url
+      expect(response).to have_http_status(:success)
+    end
+  end
 end

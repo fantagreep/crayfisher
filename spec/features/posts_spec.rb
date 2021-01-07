@@ -13,14 +13,15 @@ RSpec.feature 'Post', type: :feature do
   scenario "user successfully posts with content" do
     visit root_path
     expect do
+      fill_in "address", with: "Example"
       fill_in "post-content", with: "Example"
       click_button "投稿する"
     end.to change(Post, :count).by(1)
     expect(current_path). to eq root_path
-    within '.col-md-8' do
+    within '.feed' do
       expect(find('.posts')).to have_content "Example"
       expect do
-        click_on "削除する"
+        click_on(class: "delete-post")
       end.to change(Post, :count).by(-1)
       expect(page).to have_no_content "Example"
     end

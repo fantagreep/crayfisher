@@ -1,4 +1,23 @@
-- provide(:title, "About")
+- provide(:title, "Crayfisherとは？")
 
-h1 StaticPages#about
-p Find me in app/views/static_pages/home.html.slim
+.center
+  h1 What is Crayfisher?
+  h2
+    | Crayfisherはザリガニ好きのザリガニ好きによるザリガニ好きのためのザリガニ釣りスポット共有アプリです。
+  = image_tag 'tsuri_zarigani.png', class: "about-img", alt: "a photograph of crayfisher"
+
+  h1 What Can We do with Crayfisher?
+  h2
+    | Cryfisherに登録することによってお気に入りのザリガニスポットを世界中の人と共有することができます。
+    br
+    | さらに、ザリガニ釣りのノウハウや写真を合わせて投稿することによってユーザー間でのシナジー効果も期待できます。
+  = image_tag 'zarigani.png', class: "about-img", alt: "a photograph of crayfish"
+
+  h1 The Reoson We Should Use Crayfisher
+  h2
+    | ザリガニ釣りは孤独と忍耐との戦いです。
+    br
+    | しかしCrayfisherを利用することによって同じザリガニ漁師との絆を深め、協力し、試練を乗り越えていくことができます。
+    br
+    | さあ、今すぐCrayfisherに登録し素敵なザリガニライフを送りましょう！
+  = link_to "今すぐ登録する！", new_user_registration_path, class: "btn btn-lg btn-primary"

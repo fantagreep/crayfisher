@@ -5,7 +5,8 @@
     section.user_info
       h1
         -if @user.image.attached?
-          = image_tag @user.image, class: "icon"
+          = image_tag @user.avator, class: "icon"
+        br
         = @user.name
   .col-md-8
     - if @user.posts.any?

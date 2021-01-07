@@ -57,18 +57,39 @@ p {
 
 /* header */
 
+.navbar {
+  justify-content: flex-start !important;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
+  padding-left: 30px;
   font-size: 1.7em;
-  color: white;
+  color: black;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  padding-top: 13px;
   font-weight: bold;
   &:hover {
     color: white;
     text-decoration: none;
+  }
+}
+
+.collapse:not(.show) {
+  display: none !important;
+}
+
+.navbar-toggler {
+  margin: 0 30px 0 auto;
+}
+
+.navbar-nav {
+  margin: 0 0 0 auto !important;
+  .nav-item {
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 
@@ -101,7 +122,7 @@ footer {
 /* home */
 
 .map-wrapper {
-  margin-top: 30px;
+  margin: 30px 0;
   position: relative;
   width:100%;
   padding-top:56.25%;
@@ -157,11 +178,19 @@ input {
   margin-left: 0;
 }
 
+.search-form {
+  display: flex;
+}
+
 /* edit */
 
 .edit-account {
-  width: 50%;
-  margin: 0 auto;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  a {
+    margin-top: 10px;
+  }
 }
 
 .edit-password-btn {
@@ -177,6 +206,15 @@ input {
   text-align: center;
 }
 
+#user_image {
+  margin-bottom: 10px;
+}
+
+#edit_user {
+  label {
+    margin-top: 10px;
+  }
+}
 /* Users index */
 
 .users {
@@ -234,4 +272,78 @@ span.image {
   input {
     border: 0;
   }
+}
+
+.btn-link {
+  color: #007bff !important;
+  cursor: pointer;
+  &:hover {
+    color: blue !important;
+  }
+}
+
+/* post form */
+
+#post-content {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#picture {
+  margin-bottom: 20px;
+}
+
+#feed-header {
+  margin-top: 20px;
+
+}
+
+/* signup form */
+
+#new_user {
+  label {
+    margin: 5px;
+  }
+}
+
+.btn-primary {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.policy-link {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  a {
+    margin-top: 10px;
+  }
+}
+
+/* login */
+
+.actions {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#session_remember_me {
+  margin-top: 2px;
+}
+
+#new_user {
+  label {
+    margin: 10px;
+  }
+}
+
+@media (min-width: 768px){
+  .col-md-6 {
+    margin: 0 auto;
+  }
+}
+
+/* show */
+#show_map {
+  margin: 0 auto;
 }

@@ -1,12 +1,22 @@
 class StaticPagesController < ApplicationController
   def home
+    @posts = Post.all.includes([:spot, :user, picture_attachment: :blob, user: { image_attachment: :blob }])
+    @feed_items = @posts.paginate(page: params[:page])
+    @spots = Spot.all
+    gon.spots = @spots
+    @user = current_user
     if user_signed_in?
       @post = current_user.posts.build
-      @feed_items = current_user.feed.paginate(page: params[:page])
+      @post.build_spot
     end
-    @user = current_user
   end
 
   def about
+  end
+
+  def terms
+  end
+
+  def policy
   end
 end

@@ -1,0 +1,7 @@
+.show
+  .show__address.center
+    = @post.spot.address
+  .show_maps id="show_map" style="height: 320px; width: 400px;"
+
+<!-- Modal -->
+= render '/posts/modal', post: @post

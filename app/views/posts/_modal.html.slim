@@ -1,0 +1,23 @@
+.modal.fade id="exampleModalLong-#{post.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true"&times;
+      .modal-body
+        -if post.user.image.attached?
+          = link_to image_tag(post.user.icon), post.user, class: "icon"
+        span.user = link_to post.user.name, post.user
+        br
+        span.spot
+          = link_to post do
+            = post.spot&.address if post.spot&.address?
+        span.content
+          = post.content
+          = image_tag post.display_image if post.picture.attached?
+        span.timestamp
+          = time_ago_in_words(post.created_at)+"前"
+          - if current_user == post.user
+            = link_to "削除する", post, method: :delete, data: { confirm: "削除しますか？" }
+    .modal-footer
+    button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる

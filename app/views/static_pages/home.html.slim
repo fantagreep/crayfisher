@@ -5,38 +5,22 @@
 - if user_signed_in?
   .row
     aside.col-md-4
-      section.user_info
-        = render 'shared/user_info'
       section.post_form
         = render 'shared/post_form'
-    .col-md-8
-      h3 最近の投稿
+    .col-md-8.feed
+      h3#feed-header 最近の投稿
       = render 'shared/feed', user: @user
 - else
   .center.jumbotron
-    h1 Craifisherへようこそ！
+    h1 Crayfisherへようこそ！
     h2
       | Crayfisherはザリガニ好きのザリガニ好きによるザリガニ好きのためのザリガニ釣りスポット共有アプリです。
       br
       | ユーザーとザリガニ釣りスポットを共有して素敵なザリガニライフを送りましょう！
-    = current_user&.name || "NA"
-    p /
-    = current_user&.id || "NA"
-    br
     = link_to "今すぐ登録する！", new_user_registration_path, class: "btn btn-lg btn-primary"
-
 javascript:
-  var map;
-
-  function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 35.46613401851896, lng: 139.623580130206},
-      zoom: 8
-    });
-    map.addListener('click', function(e){
-      this.panTo(e.latLng);
-    });
-  }
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNAZ8ULE4YS1M1GHdpjPZqSu_s2WUPh0E&callback=initMap" async defer></script>
-<script src="infobox.js"></script>
+  <script>
+    $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').trigger('focus')
+    })
+  </script>

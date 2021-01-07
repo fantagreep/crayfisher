@@ -1,6 +1,10 @@
 # == Route Map
 #
 #                    Prefix Verb   URI Pattern                                                                              Controller#Action
+#                      root GET    /                                                                                        static_pages#home
+#                     about GET    /about(.:format)                                                                         static_pages#about
+#                     terms GET    /terms(.:format)                                                                         static_pages#terms
+#                    policy GET    /policy(.:format)                                                                        static_pages#policy
 #          new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
 #              user_session POST   /users/sign_in(.:format)                                                                 devise/sessions#create
 #      destroy_user_session DELETE /users/sign_out(.:format)                                                                devise/sessions#destroy
@@ -11,9 +15,10 @@
 #                           PUT    /users(.:format)                                                                         users/registrations#update
 #                           DELETE /users(.:format)                                                                         users/registrations#destroy
 #                           POST   /users(.:format)                                                                         users/registrations#create
-#                      root GET    /                                                                                        static_pages#home
-#                     about GET    /about(.:format)                                                                         static_pages#about
 #                      user GET    /users/:id(.:format)                                                                     users#show
+#                     posts POST   /posts(.:format)                                                                         posts#create
+#                      post GET    /posts/:id(.:format)                                                                     posts#show
+#                           DELETE /posts/:id(.:format)                                                                     posts#destroy
 #             password_edit GET    /users/:id/password_edit(.:format)                                                       users#password_edit
 #           password_update PATCH  /users/:id/password_update(.:format)                                                     users#password_update
 #        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
@@ -25,11 +30,13 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
+  get '/terms', to: 'static_pages#terms'
+  get '/policy', to: 'static_pages#policy'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
   resources :users, only: [:show]
-  resources :posts, only: [:create, :destroy]
+  resources :posts, only: [:create, :destroy, :show]
   get "users/:id/password_edit", to: "users#password_edit", as: 'password_edit'
   patch "users/:id/password_update", to: "users#password_update", as: 'password_update'
 end

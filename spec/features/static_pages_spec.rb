@@ -9,6 +9,6 @@ RSpec.feature 'StaticPages', type: :feature do
 
   scenario 'About' do
     visit about_url
-    expect(page).to have_title "About | Crayfisher"
+    expect(page).to have_title "Crayfisherとは？ | Crayfisher"
   end
 end

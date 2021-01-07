@@ -1,11 +1,24 @@
 li id="post-<%= post.id %>"
-  -if @user&.image&.attached?
-    = link_to image_tag(@user.image), post.user, class: "icon"
+  -if post.user.image.attached?
+    = link_to image_tag(post.user.icon), post.user, class: "icon"
   span.user = link_to post.user.name, post.user
+  br
+  span.spot
+    = link_to post do
+      = post.spot&.address if post.spot&.address?
   span.content
     = post.content
     = image_tag post.display_image if post.picture.attached?
   span.timestamp
     = time_ago_in_words(post.created_at)+"前"
     - if current_user == post.user
-      = link_to "削除する", post, method: :delete, data: { confirm: "削除しますか？" }
+      = link_to "削除する", post, method: :delete, data: { confirm: "削除しますか？" }, class: "delete-post"
+
+= render '/posts/modal', post: post
+
+javascript:
+  <script>
+    $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').trigger('focus')
+    })
+  </script>

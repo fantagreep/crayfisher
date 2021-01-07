@@ -1,11 +1,13 @@
 h2
   | プロフィール編集
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = render "form", f: f
+.row
+  .col-md-6.col-md-offset-3
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = render "form", f: f
 
-  .actions
-    = f.submit "設定する"
-  .edit-account
-    = link_to "パスワードを変更する", password_edit_path(@user), class: "edit-password-btn btn"
-    = link_to "アカウントを削除する", registration_path(resource_name), method: :delete, class: "delete-btn btn",
-                                    data: { confirm: "アカウントの全ての情報が削除されます。本当に削除しますか？" }
+      .actions
+        = f.submit "設定する"
+      .edit-account
+        = link_to "パスワードを変更する", password_edit_path(@user), class: "edit-password-btn btn"
+        = link_to "アカウントを削除する", registration_path(resource_name), method: :delete, class: "delete-btn btn",
+                                        data: { confirm: "アカウントの全ての情報が削除されます。本当に削除しますか？" }
