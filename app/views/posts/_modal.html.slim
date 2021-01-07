@@ -5,9 +5,19 @@
         button type="button" class="close" data-dismiss="modal" aria-label="Close"
           span aria-hidden="true"&times;
       .modal-body
-        .show
-          .show__address
-            = post.content
-          .show__maps id="map" style="height: 320px; width: 400px;"
+        -if post.user.image.attached?
+          = link_to image_tag(post.user.icon), post.user, class: "icon"
+        span.user = link_to post.user.name, post.user
+        br
+        span.spot
+          = link_to post do
+            = post.spot&.address if post.spot&.address?
+        span.content
+          = post.content
+          = image_tag post.display_image if post.picture.attached?
+        span.timestamp
+          = time_ago_in_words(post.created_at)+"前"
+          - if current_user == post.user
+            = link_to "削除する", post, method: :delete, data: { confirm: "削除しますか？" }
     .modal-footer
     button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる

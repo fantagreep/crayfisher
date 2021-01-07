@@ -30,6 +30,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   has_one_attached :image
   has_many :posts, dependent: :destroy
+  before_create :default_image
 
   def update_with_password(params, *options)
     params.delete(:current_password)
@@ -59,5 +60,12 @@ class User < ApplicationRecord
 
   def avator
     image&.variant(gravity: :center, resize: "100x100^", crop: "100x100+0+0")
+  end
+
+  def default_image
+    if !image.attached?
+      image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default-profile-image.png')),
+                   filename: 'default-profile-image.png', content_type: 'image/png')
+    end
   end
 end

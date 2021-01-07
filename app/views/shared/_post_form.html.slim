@@ -6,6 +6,12 @@
         = s.text_field :address, placeholder: "スポットを入力", id: "address", class: 'spot__text'
         button onclick="codeAddress()" type="button"
           i class="fas fa-search"
+      = s.label :address, "住所"
+      = s.text_field :address, autocomplete: "on", placeholder: "住所", id: "address-info"
+      = s.label :latitude, "緯度"
+      = s.text_field :latitude, autocomplete: "on", placeholder: "緯度", id: "latitude"
+      = s.label :longitude, "経度"
+      = s.text_field :longitude, autocomplete: "on", placeholder: "経度", id: "longitude"
       = f.text_area :content, placeholder: "テキストを入力してください", id: "post-content"
       span.image
         = f.file_field :picture, id: "picture"

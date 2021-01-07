@@ -7,7 +7,7 @@
     aside.col-md-4
       section.post_form
         = render 'shared/post_form'
-    .col-md-8
+    .col-md-8.feed
       h3#feed-header 最近の投稿
       = render 'shared/feed', user: @user
 - else
@@ -18,7 +18,6 @@
       br
       | ユーザーとザリガニ釣りスポットを共有して素敵なザリガニライフを送りましょう！
     = link_to "今すぐ登録する！", new_user_registration_path, class: "btn btn-lg btn-primary"
-
 javascript:
   <script>
     $('#myModal').on('shown.bs.modal', function () {
