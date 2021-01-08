@@ -6,6 +6,12 @@ ja:
         name: 名前
         email: メールアドレス
         password: パスワード
+      post:
+        content: テキスト
+      spot:
+        address: 住所
+        latitude: 緯度
+        longitude: 経度
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

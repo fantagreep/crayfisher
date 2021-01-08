@@ -27,6 +27,10 @@ textarea {
   }
 }
 
+.row {
+  margin-top: 20px;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -180,6 +184,7 @@ input {
 
 .search-form {
   display: flex;
+  margin-bottom: 20px;
 }
 
 /* edit */
@@ -284,12 +289,13 @@ span.image {
 
 /* post form */
 
-#post-content {
-  margin-top: 20px;
-  margin-bottom: 20px;
+.spot {
+  label {
+    margin-top: 10px;
+  }
 }
 
-#picture {
+#post-content {
   margin-bottom: 20px;
 }
 
