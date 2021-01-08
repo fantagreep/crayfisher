@@ -123,6 +123,10 @@ footer {
   }
 }
 
+.copyright {
+  padding-top: 0 !important;
+}
+
 /* home */
 
 .map-wrapper {
@@ -137,6 +141,14 @@ footer {
     height: 100%;
     top: 0;
     left: 0;
+  }
+}
+
+/* about */
+
+.exampleimage {
+  img {
+    margin-bottom: 20px;
   }
 }
 
