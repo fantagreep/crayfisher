@@ -7,6 +7,7 @@
     aside.col-md-4
       section.post_form
         = render 'shared/post_form'
+      button data-toggle="modal" data-target="#ModalHowTo" class="btn btn-link pull-right" id="modal-how-to" 投稿方法についてはこちら
     .col-md-8.feed
       h3#feed-header 最近の投稿
       = render 'shared/feed', user: @user
@@ -18,9 +19,11 @@
       br
       | ユーザーとザリガニ釣りスポットを共有して素敵なザリガニライフを送りましょう！
     = link_to "今すぐ登録する！", new_user_registration_path, class: "btn btn-lg btn-primary"
+= render '/static_pages/howto'
+
 javascript:
   <script>
     $('#myModal').on('shown.bs.modal', function () {
       $('#myInput').trigger('focus')
-    })
+    });
   </script>
