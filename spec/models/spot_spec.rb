@@ -19,6 +19,17 @@
 #  fk_rails_...  (post_id => posts.id)
 #
 
-# RSpec.describe Spot, type: :model do
-# pending "add some examples to (or delete) #{__FILE__}"
-# end
+RSpec.describe Spot, type: :model do
+  let(:user) { create :user }
+
+  it "is valid with post_id" do
+    post = user.posts.build(content: "heyhey")
+    spot = post.build_spot(address: "hey")
+    expect(spot).to be_valid
+  end
+
+  it "is invalid without post_id" do
+    spot = Spot.new(address: "hey")
+    expect(spot).not_to be_valid
+  end
+end
