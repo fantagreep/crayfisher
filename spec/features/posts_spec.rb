@@ -18,8 +18,13 @@ RSpec.feature 'Post', type: :feature do
       click_button "投稿する"
     end.to change(Post, :count).by(1)
     expect(current_path). to eq root_path
+    expect(find('.posts')).to have_content "Example"
+    click_on(class: "btn-edit-post")
+    fill_in "post-content", with: "Example-modified"
+    click_button "投稿する"
+    expect(current_path). to eq root_path
     within '.feed' do
-      expect(find('.posts')).to have_content "Example"
+      expect(find('.posts')).to have_content "Example-modified"
       expect do
         click_on(class: "delete-post")
       end.to change(Post, :count).by(-1)
