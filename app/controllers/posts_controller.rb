@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :user_signed_in?, only: [:create, :destroy]
-  before_action :correct_user, only: :destroy
+  before_action :correct_user, only: [:destroy, :edit, :update]
 
   def show
     @post = Post.find(params[:id])
@@ -29,14 +29,28 @@ class PostsController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      flash[:success] = "投稿が更新されました"
+      redirect_to root_url
+    else
+      render 'edit'
+    end
+  end
+
   private
 
-  def post_params
-    params.require(:post).permit(:title, :content, :picture, spot_attributes: [:address, :latitude, :longitude])
-  end
+    def post_params
+      params.require(:post).permit(:title, :content, :picture, spot_attributes: [:address, :latitude, :longitude])
+    end
 
-  def correct_user
-    @post = current_user.posts.find_by(id: params[:id])
-    redirect_to root_url if @post.nil?
-  end
+    def correct_user
+      @post = current_user.posts.find_by(id: params[:id])
+      redirect_to root_url if @post.nil?
+    end
 end

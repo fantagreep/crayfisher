@@ -18,6 +18,7 @@
         span.timestamp
           = time_ago_in_words(post.created_at)+"前"
           - if current_user == post.user
-            = link_to "削除する", post, method: :delete, data: { confirm: "削除しますか？" }
+            = link_to "編集", edit_post_path(post), class: "btn btn-link"
+            = link_to "削除", post, method: :delete, data: { confirm: "削除しますか？" }
     .modal-footer
     button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる
