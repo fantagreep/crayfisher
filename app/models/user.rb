@@ -30,6 +30,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   has_one_attached :image
   has_many :posts, dependent: :destroy
+  has_many :comments
   before_create :default_image
 
   def update_with_password(params, *options)

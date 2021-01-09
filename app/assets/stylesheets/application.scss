@@ -365,3 +365,20 @@ span.image {
 #show_map {
   margin: 0 auto;
 }
+
+/* modal */
+
+.comment {
+  margin-top: 30px;
+  margin-left: 40px;
+  margin-right: 40px;
+  form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+.comments-list {
+  list-style: none;
+  padding-left: 0px !important;
+}
