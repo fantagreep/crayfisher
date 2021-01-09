@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
     @lat = @post.spot.latitude
     @lng = @post.spot.longitude
     gon.lat = @lat
