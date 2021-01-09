@@ -18,7 +18,8 @@
         span.timestamp
           = time_ago_in_words(post.created_at)+"前"
           - if current_user == post.user
-            = link_to "削除する", post, method: :delete, data: { confirm: "削除しますか？" }
+            = link_to "編集", edit_post_path(post), class: "btn btn-link"
+            = link_to "削除", post, method: :delete, data: { confirm: "削除しますか？" }
         .comment
           h2 コメント
           = render post.comments
