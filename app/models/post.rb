@@ -21,6 +21,7 @@ require "mini_magick"
 
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :comments
   has_one :spot, dependent: :destroy
   accepts_nested_attributes_for :spot
   has_one_attached :picture

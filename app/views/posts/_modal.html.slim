@@ -20,5 +20,14 @@
           - if current_user == post.user
             = link_to "編集", edit_post_path(post), class: "btn btn-link"
             = link_to "削除", post, method: :delete, data: { confirm: "削除しますか？" }
+        .comment
+          h2 コメント
+          = render post.comments
+          =  form_with(model:[post, @comment]) do |f|
+            = f.label :content, "コメント"
+            = f.text_field :content, id: "comment-content"
+            = f.hidden_field :post_id, value: post.id
+            br
+            = f.submit 'コメントする'
     .modal-footer
     button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる

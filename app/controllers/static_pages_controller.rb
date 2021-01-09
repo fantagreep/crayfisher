@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @posts = Post.all.includes([:spot, :user, picture_attachment: :blob, user: { image_attachment: :blob }])
+    @posts = Post.all.includes([:comments, :spot, :user, picture_attachment: :blob, user: { image_attachment: :blob }, comments: :user])
     @feed_items = @posts.paginate(page: params[:page])
     @spots = Spot.all
     gon.spots = @spots
@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
     if user_signed_in?
       @post = current_user.posts.build
       @post.build_spot
+      @comment = Comment.new
     end
   end
 

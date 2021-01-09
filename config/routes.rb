@@ -36,7 +36,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
   }
   resources :users, only: [:show]
-  resources :posts, only: [:create, :destroy, :show, :edit, :update]
+  resources :posts, only: [:create, :destroy, :show, :edit, :update] do
+    resources :comments, only: [:create, :destroy]
+  end
   get "users/:id/password_edit", to: "users#password_edit", as: 'password_edit'
   patch "users/:id/password_update", to: "users#password_update", as: 'password_update'
 end
