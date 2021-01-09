@@ -26,7 +26,7 @@ class Post < ApplicationRecord
   has_one_attached :picture
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 140 }
+  validates :content, presence: true, length: { maximum: 1000 }
   validates :picture, content_type: {
     in: %w(image/jpeg image/gif image/png),
     message: "有効なフォーマットではありません",
