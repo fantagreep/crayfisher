@@ -4,11 +4,11 @@ h2
   .col-md-6.col-md-offset-3
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .field
-        = f.label :email, "メールアドレス  (テストユーザーの方はexample@example.comをご利用ください)"
+        = f.label :email, "メールアドレス  (テストユーザーの方は「example@example.com」をご利用ください)"
         br
         = f.email_field :email, autofocus: true, autocomplete: "email"
       .field
-        = f.label :password, "パスワード  (テストユーザーの方はfoobarをご利用ください)"
+        = f.label :password, "パスワード  (テストユーザーの方は「foobar」をご利用ください)"
         br
         = f.password_field :password, autocomplete: "current-password"
       .field
