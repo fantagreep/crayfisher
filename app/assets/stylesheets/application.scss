@@ -148,10 +148,20 @@ footer {
 
 .exampleimage {
   img {
+    margin-top: 20px;
     margin-bottom: 20px;
   }
 }
 
+.about {
+  h1 {
+    margin-top: 30px;
+  }
+  h3 {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+}
 /* forms */
 
 input, textarea, select, .uneditable-input {
