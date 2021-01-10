@@ -8,7 +8,7 @@ li id="post-<%= post.id %>"
       = post.spot&.address if post.spot&.address?
   span.content
     = post.content
-    = image_tag post.display_image if post.picture.attached?
+    = image_tag post.display_image, class: "display-image" if post.picture.attached?
   span.timestamp
     = time_ago_in_words(post.created_at)+"前"
     - if current_user == post.user

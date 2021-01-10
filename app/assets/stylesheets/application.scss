@@ -309,6 +309,12 @@ span.image {
   }
 }
 
+@media (max-width: 380px){
+  .display-image {
+    width: 200px;
+  }
+}
+
 /* post form */
 
 .spot {
