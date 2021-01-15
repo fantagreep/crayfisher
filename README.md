@@ -7,8 +7,12 @@ Crayfisherはザリガニ釣りスポットを共有するSNSサービスです�
 そんな時にはCrayfisherを是非ご利用ください。
 
 url : https://crayfisher.herokuapp.com/ 
-メールアドレス：example@example.com
-パスワード：foobar
+
+ログイン用
+
+- メールアドレス：example@example.com
+
+- パスワード：foobar
 
 ## 実装機能
 * 記事投稿機能（位置情報、コメント）
