@@ -41,7 +41,3 @@ url : https://crayfisher.herokuapp.com/
 * テストフレームワーク : RSpec
 * その他ツールなど : Git Github Rubocop CircleCI 
 
-# 作者
-
-* Jin Mizuno
-* mizunojin1215@gmail.com
