@@ -32,6 +32,7 @@ gem "gmaps4rails"
 gem "geocoder"
 gem "gon"
 gem "dotenv-rails"
+gem 'ransack'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

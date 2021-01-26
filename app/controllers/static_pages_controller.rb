@@ -9,6 +9,8 @@ class StaticPagesController < ApplicationController
       @post = current_user.posts.build
       @post.build_spot
       @comment = Comment.new
+      @q = current_user.posts.ransack(params[:q])
+      @p = @q.result(distinct: true)
     end
   end
 
