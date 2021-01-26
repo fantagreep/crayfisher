@@ -1,7 +1,5 @@
 class StaticPagesController < ApplicationController
   def home
-    @posts = Post.all.includes([:comments, :spot, :user, picture_attachment: :blob, user: { image_attachment: :blob }, comments: :user])
-    @feed_items = @posts.paginate(page: params[:page])
     @spots = Spot.all
     gon.spots = @spots
     @user = current_user
@@ -9,8 +7,13 @@ class StaticPagesController < ApplicationController
       @post = current_user.posts.build
       @post.build_spot
       @comment = Comment.new
-      @q = current_user.posts.ransack(params[:q])
-      @p = @q.result(distinct: true)
+      if params[:q]
+        @q = current_user.posts.ransack(params[:q])
+        @posts = @q.result(distinct: true)
+      else
+        @posts = Post.all.includes([:comments, :spot, :user, picture_attachment: :blob, user: { image_attachment: :blob }, comments: :user])
+      end
+      @feed_items = @posts.paginate(page: params[:page])
     end
   end
 
