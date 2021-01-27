@@ -22,6 +22,7 @@ url : https://crayfisher.herokuapp.com/
 
 ## アプリケーション内で使用している技術
 * Rspecを使用した自動テスト
+* Ransackを利用した検索機能
 * rubocopを使用した静的コード解析ツール
 * CircleCIによる継続的インテグレーション
 * Dockerによる環境構築
