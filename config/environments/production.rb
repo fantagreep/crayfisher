@@ -11,7 +11,7 @@ Rails.application.configure do
   config.log_level = :debug
   config.log_tags = [:request_id]
   config.action_mailer.perform_caching = false
-  config.i18n.fallbacks = true
+  config.i18n.fallbacks = [I18n.default_locale]
   config.active_support.deprecation = :notify
   config.log_formatter = ::Logger::Formatter.new
   if ENV["RAILS_LOG_TO_STDOUT"].present?
