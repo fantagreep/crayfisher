@@ -9,6 +9,8 @@ class PostsController < ApplicationController
     @lng = @post.spot.longitude
     gon.lat = @lat
     gon.lng = @lng
+    @spots = Spot.all
+    gon.spots = @spots
   end
 
   def create
