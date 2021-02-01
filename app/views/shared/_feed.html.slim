@@ -1,12 +1,16 @@
+
+= search_form_for @q, url: root_path, html: { method: :post }, class: "mb-5" do |f|
+  .form-group.row
+    .col-sm-10#search
+      = f.search_field  :content_or_spot_address_cont, class: 'form-control', placeholder: "投稿を検索"
+      button[type="submit btn btn-outline-success my-2 my-sm-0"]
+        i.fas.fa-search
+
 - if @feed_items.any?
-  = search_form_for @q, url: root_path, html: { method: :post }, class: "mb-5" do |f|
-    .form-group.row
-      .col-sm-10#search
-        = f.search_field  :content_or_spot_address_cont, class: 'form-control', placeholder: "投稿を検索"
-        button[type="submit btn btn-outline-success my-2 my-sm-0"]
-          i.fas.fa-search
-
-
   ol.posts
     = render @feed_items
   = will_paginate @feed_items, params: { controller: :static_pages, action: :home }
+- else 
+  h4.center 投稿が見つかりませんでした
+  .center
+    = image_tag 'Raffaello.jpg', alt: "not found", width: "300px"
