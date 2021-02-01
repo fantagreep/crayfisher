@@ -23,3 +23,9 @@
     = link_to "Crayfisherとは?", about_path, class: "btn btn-link"
 = render '/static_pages/howto'
 
+javascript:
+  <script>
+    $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').trigger('focus')
+    });
+  </script>
