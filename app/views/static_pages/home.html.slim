@@ -2,26 +2,32 @@
 .map-wrapper
   #map.gmap
 
-- if user_signed_in?
-  .row
+
+.row
+  - if user_signed_in?
     aside.col-md-4
       section.post_form
         = render 'shared/post_form'
       button data-toggle="modal" data-target="#ModalHowTo" class="btn btn-link pull-right" id="modal-how-to" 投稿方法についてはこちら
-    .col-md-8.feed
-      h3#feed-header 最近の投稿
-      = render 'shared/feed', user: @user
-- else
-  .center.jumbotron
-    h1 Crayfisherへようこそ！
-    h2
-      | Crayfisherは子供の遊び場スポットを共有するサービスです。
-      br
-      | ザリガニ釣りスポット、クワガタの取れる木、トカゲがいる場所、ネットでは出てこない遊び場スポットを知りたい時、是非Crayfisherを是非ご利用ください。
-    = link_to "今すぐ登録する！", new_user_registration_path, class: "btn btn-lg btn-info"
-    br
-    = link_to "Crayfisherとは?", about_path, class: "btn btn-link"
+  - else
+    aside.col-md-4
+      .center.jumbotron
+        h2 Crayfisherへようこそ！
+        h4
+          | Crayfisherは子供の遊び場スポットを共有するサービスです。
+          br
+          | 今すぐCrayfisherに登録して、全国のお父さんお母さんたちと遊び場スポットを共有しましょう！
+        = link_to "今すぐ登録する！", new_user_registration_path, class: "btn btn-lg btn-info"
+        br
+        = link_to "Crayfisherとは?", about_path, class: "btn btn-link"
+  .feed.col-md-8
+    h3#feed-header 最近の投稿
+    = render 'shared/feed', user: @user
+    .posts
+      - @spots.each do |spot|
+        = render '/posts/modal', post: spot.post
 = render '/static_pages/howto'
+
 
 javascript:
   <script>

@@ -150,6 +150,13 @@ footer {
   margin: 0 auto;
 }
 
+@media (min-width: 768px){
+  .jumbotron {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+  }
+}
+
 /* about */
 
 .exampleimage {
