@@ -16,6 +16,6 @@ h2
           = f.check_box :remember_me, id: "session_remember_me"
           span ログイン状態を保持する
       .actions
-        = f.submit "ログイン"
+        = f.submit "ログイン", class: "blue btn white"
     .center
       = link_to "新規登録はこちら", new_user_registration_path, class: "btn"

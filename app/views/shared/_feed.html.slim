@@ -1,10 +1,10 @@
 
 = search_form_for @q, url: root_path, html: { method: :post }, class: "mb-5" do |f|
-  .form-group.row
-    .col-sm-10#search
-      = f.search_field  :content_or_spot_address_or_user_name_cont, class: 'form-control', placeholder: "投稿を検索"
-      button[type="submit btn btn-outline-success my-2 my-sm-0"]
-        i.fas.fa-search
+    .form-group.row.imput-group
+      .col-sm-10#search.form-outline
+        = f.search_field  :content_or_spot_address_or_user_name_cont, class: 'form-control', placeholder: "投稿を検索"
+        button#seach-addon.input-group-text.border-0.blue type="submit"
+          i.fas.fa-search.white
 
 - if @feed_items.any?
   ol.posts

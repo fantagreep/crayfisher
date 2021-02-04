@@ -10,6 +10,7 @@ $gray-medium-light: #eaeaea;
 
 body {
   padding-top: 60px;
+  background-color: #f6f6f6 !important;
 }
 
 section {
@@ -31,6 +32,17 @@ textarea {
   margin-top: 20px;
 }
 
+.text-imput-form {
+  border-radius: 5px;
+}
+
+.blue {
+  background-color: #17a2b8 !important;
+}
+
+.white {
+  color: #f6f6f6;
+}
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -63,6 +75,8 @@ p {
 
 .navbar {
   justify-content: flex-start !important;
+  background-color: #161D6F !important;
+  border-radius: 10px;
 }
 
 #logo {
@@ -70,13 +84,13 @@ p {
   margin-right: 10px;
   padding-left: 30px;
   font-size: 1.7em;
-  color: black;
+  color: #f6f6f6;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 13px;
   font-weight: bold;
   &:hover {
-    color: white;
+    color:darkgrey;
     text-decoration: none;
   }
 }
@@ -94,7 +108,18 @@ p {
   .nav-item {
     margin-left: 10px;
     margin-right: 10px;
+    .nav-link {
+      color: #f6f6f6 !important;
+    }
   }
+}
+
+.hamburger {
+  color: #f6f6f6;
+}
+
+#icon-img {
+  border-radius: 50%;
 }
 
 /* footer */
@@ -107,7 +132,7 @@ footer {
   a {
     color: $gray;
     &:hover {
-      color: $gray-darker;
+      color: darkgrey;
     }
   }
   small {
@@ -125,14 +150,19 @@ footer {
 
 .copyright {
   padding-top: 0 !important;
+  color: #f6f6f6;
+}
+
+.footer-link {
+  color: #f6f6f6;
 }
 
 /* home */
 
 .map-wrapper {
-  margin: 30px 0;
+  margin: 30px auto;
   position: relative;
-  width:100%;
+  width:90%;
   padding-top:56.25%;
   border: 1px solid #CCC;
   .gmap {
@@ -297,6 +327,9 @@ input {
     float: left;
     margin-right: 10px;
     margin-top: 5px;
+    img {
+      border-radius: 50%;
+    }
   }
 }
 
@@ -342,7 +375,6 @@ span.image {
 
 #feed-header {
   margin-top: 20px;
-
 }
 
 /* signup form */

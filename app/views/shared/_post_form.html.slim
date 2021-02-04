@@ -3,20 +3,20 @@
     = f.fields_for :spot do |s|
       = s.label :address, "レビュー場所(Google Mapで検索)", class: 'spot__title'
       .search-form
-        = s.text_field :address, placeholder: "スポットを入力", id: "address", class: 'spot__text'
-        button onclick="codeAddress()" type="button"
-          i class="fas fa-search"
+        = s.text_field :address, placeholder: "スポットを入力", id: "address", class: 'spot__text form-control'
+        button onclick="codeAddress()" type="button" class="blue input-group-text border-0" id="search-addon"
+          i class="fas fa-search white"
       = s.label :address, "住所"
-      = s.text_field :address, autocomplete: "on", placeholder: "住所", id: "address-info"
+      = s.text_field :address, autocomplete: "on", placeholder: "住所", id: "address-info", class: "form-control"
       = s.label :latitude, "緯度", class: "hidden"
       = s.text_field :latitude, autocomplete: "on", placeholder: "緯度", id: "latitude", class: "hidden"
       = s.label :longitude, "経度", class: "hidden"
       = s.text_field :longitude, autocomplete: "on", placeholder: "経度", id: "longitude", class: "hidden"
       = f.label :content, "テキスト"
-      = f.text_area :content, placeholder: "テキストを入力してください", id: "post-content"
+      = f.text_area :content, placeholder: "テキストを入力してください", id: "post-content", class: "form-control"
       span.image
         = f.file_field :picture, id: "picture"
-    = f.submit "投稿する", class: "btn btn-primary", accept: "image/jpeg,image/gif,image/png"
+    = f.submit "投稿する", class: "btn btn-primary blue", accept: "image/jpeg,image/gif,image/png"
 
 javascript:
   <script type="text/javascript">

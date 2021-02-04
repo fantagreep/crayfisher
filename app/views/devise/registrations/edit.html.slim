@@ -6,7 +6,7 @@ h2
       = render "form", f: f
 
       .actions
-        = f.submit "設定する"
+        = f.submit "設定する", class: "blue white btn"
       .edit-account
         = link_to "パスワードを変更する", password_edit_path(@user), class: "edit-password-btn btn"
         = link_to "アカウントを削除する", registration_path(resource_name), method: :delete, class: "delete-btn btn",
