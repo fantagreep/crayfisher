@@ -1,10 +1,10 @@
 li id="post-<%= post.id %>"
   -if post.user.image.attached?
     = link_to image_tag(post.user.icon), post.user, class: "icon"
-  span.user = link_to post.user.name, post.user
+  span.user = link_to post.user.name, post.user, class: "light-blue-cha"
   br
   span.spot
-    = link_to post do
+    = link_to post, class: "light-blue-cha" do
       = post.spot&.address if post.spot&.address?
   span.content
     = post.content

@@ -3,7 +3,7 @@
     = @post.spot.address
   .show_maps id="show_map" style="height: 320px; width: 400px;"
 .posts
-  = render '/posts/modal', post: @post
+  = render '/posts/modal', post: @post, comment: @comment
 
 javascript:
   <script>
