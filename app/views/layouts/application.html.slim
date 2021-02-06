@@ -1,6 +1,13 @@
 doctype html
 html
   head
+    // Global site tag (gtag.js) - Google Analytics 
+    script async src="https://www.googletagmanager.com/gtag/js?id=G-P83VVWDSNF"
+    javascript:
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P83VVWDSNF');
     title = full_title(yield(:title))
     = csrf_meta_tags
     = csp_meta_tag
