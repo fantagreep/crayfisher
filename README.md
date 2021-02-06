@@ -66,7 +66,7 @@ JQueryを利用し、Googlemap上の吹き出しをクリックすれば投稿�
 * テストフレームワーク : RSpec
 * その他ツールなど : Git Github Rubocop CircleCI 
 
-##関連リンク
+## 関連リンク
 <br>[twitter](https://twitter.com/AePSRBFf5TyY7cL)
 <br>[Qiita](https://qiita.com/mizuno_jin/items/af125a02fe6921725352)
 
