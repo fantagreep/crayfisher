@@ -28,7 +28,7 @@ RSpec.feature 'Post', type: :feature do
     within '.feed' do
       expect(page).to have_content "Example-modified"
       expect do
-        click_on(class: "delete-post")
+        click_on(id: "delete-post-btn")
       end.to change(Post, :count).by(-1)
       expect(page).to have_no_content "Example"
     end

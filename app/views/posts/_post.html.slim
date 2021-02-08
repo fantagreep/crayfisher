@@ -16,7 +16,7 @@ li id="post-<%= post.id %>"
   - if current_user == post.user
     span.under-btn
       = link_to "編集", edit_post_path(post), class: "btn btn-link btn-edit-post"
-      = link_to "削除", post, method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-link delete-post"
+      = link_to "削除", post, method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-link delete-post", id: "delete-post-btn"
   
     
 

@@ -1,10 +1,10 @@
 - if current_user != post.user
   span id="like-form"
     - if post.favorite?(current_user)
-      = link_to(like_path(post), method: :delete, remote: true, id: :"like-button-#{post.id}") do
-        span.fa.fa-heart.icon-btn.like-btn-unlike
+      = link_to(like_path(post), method: :delete, remote: true, id: :"like-button-#{post.id}", class: "like-btn-unlike") do
+        span.fa.fa-heart.icon-btn
         = post.likes.count
     - else
-      = link_to(likes_path(post_id: post.id), method: :post, remote: true, id: :"like-button-#{post.id}") do
-        span.fa.fa-heart.icon-btn.like-btn-like
+      = link_to(likes_path(post_id: post.id), method: :post, remote: true, id: :"like-button-#{post.id}", class: "like-btn-like") do
+        span.fa.fa-heart.icon-btn
         = post.likes.count

@@ -19,10 +19,10 @@
           div class="like-btn-#{post.id}"
             = render "likes/like", post: post 
           = time_ago_in_words(post.created_at)+"前"
-          - if current_user == post.user
-            span.under-btn
-              = link_to "編集", edit_post_path(post), class: "btn btn-link"
-              = link_to "削除", post, method: :delete, data: { confirm: "削除しますか？" }
+        - if current_user == post.user
+          span.under-btn
+            = link_to "編集", edit_post_path(post), class: "btn btn-link"
+            = link_to "削除", post, method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-link delete-post"
         .comment
           h2 コメント
           - if post.comments.any?
