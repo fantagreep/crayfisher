@@ -1,0 +1,33 @@
+.row
+	aside.col-md-4
+		section.user_info
+			h1
+				-if user.image.attached?
+					= image_tag user.avator, class: "icon"
+				br
+				= user.name
+		.tabs-bar
+			= link_to(user_path(user)) do
+				i class="fas fa-clock fa-3x blue white tabs-icon"
+					p.center 投稿
+			= link_to(likes_user_path(user)) do
+				i class="fas fa-thumbs-up fa-3x blue white tabs-icon"
+					p.center いいね
+	.col-md-8
+		- if user.posts.any?
+			ol.posts
+				- posts.each do |post|
+					li id="post-<%= post.id %>"
+						-if post.user.image.attached?
+							= link_to image_tag(post.user.icon), post.user, class: "icon"
+						span.user = link_to post.user.name, post.user
+						br
+						span.spot
+							= link_to post do
+								= post.spot&.address if post.spot&.address?
+						span.content
+							= post.content
+							= image_tag post.display_image, class: "display-image" if post.picture.attached?
+						span.timestamp
+							= time_ago_in_words(post.created_at)+"前"
+				end

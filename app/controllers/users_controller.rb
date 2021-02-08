@@ -12,6 +12,15 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def likes
+    @user = User.find(params[:id])
+    @likes = @user.likes.includes([post: [{user: {image_attachment: :blob}}, :spot, :picture_attachment]])
+    @posts = []
+    @likes.each do |like|
+      @posts << like.post
+    end
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save

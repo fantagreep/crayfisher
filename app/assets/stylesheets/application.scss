@@ -98,6 +98,7 @@ p {
   &:hover {
     color:darkgrey;
     text-decoration: none;
+    transition: 0.3s;
   }
 }
 
@@ -139,6 +140,7 @@ footer {
     color: $gray;
     &:hover {
       color: darkgrey;
+      transition: 0.3s;
     }
   }
   small {
@@ -363,6 +365,7 @@ span.image {
   cursor: pointer;
   &:hover {
     color: blue !important;
+    transition: 0.3s;
   }
 }
 
@@ -469,4 +472,24 @@ span.image {
 .edit-post {
   margin-right: 10px !important;
   margin-left: 10px !important;
+}
+
+/* user show page */
+.tabs-bar {
+  display: flex;
+  justify-content: center;
+  .tabs-icon {
+    margin: 10px 10px;
+    padding: 10px;
+    border-radius: 10%;
+    border: 1px solid #CCC;
+    &:hover {
+      color: darkgrey;
+      transition: 0.3s;
+    }
+    p {
+      font-size: 10px;
+      margin: 0;
+    }
+  }
 }
