@@ -14,8 +14,21 @@
 #  index_likes_on_user_id              (user_id)
 #  index_likes_on_user_id_and_post_id  (user_id,post_id) UNIQUE
 #
-require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:like) { create :like }
+
+  it "is valid with post_id and user_id" do
+    expect(like).to be_valid
+  end
+
+  it "is invalid without post_id" do
+    like.post_id = nil
+    expect(like).not_to be_valid
+  end
+
+  it "is valid without user_id" do
+    like.user_id = nil
+    expect(like).not_to be_valid
+  end
 end
