@@ -10,10 +10,15 @@ li id="post-<%= post.id %>"
     = post.content
     = image_tag post.display_image, class: "display-image" if post.picture.attached?
   span.timestamp
+    div class="like-btn-#{post.id}"
+      = render "likes/like", post: post 
     = time_ago_in_words(post.created_at)+"前"
-    - if current_user == post.user
+  - if current_user == post.user
+    span.under-btn
       = link_to "編集", edit_post_path(post), class: "btn btn-link btn-edit-post"
-      = link_to "削除", post, method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-link delete-post"
+      = link_to "削除", post, method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-link delete-post", id: "delete-post-btn"
+  
+    
 
 
 javascript:

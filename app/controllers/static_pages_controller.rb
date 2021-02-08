@@ -4,12 +4,12 @@ class StaticPagesController < ApplicationController
     gon.spots = @spots
     @user = current_user
     if params[:q] && params[:q].reject { |key, value| value.blank? }.present?
-      @q = Post.all.includes([:spot, :user, picture_attachment: :blob, user: { image_attachment: :blob }, comments: :user]).
+      @q = Post.all.includes([:like_users, :spot, :user, picture_attachment: :blob, user: { image_attachment: :blob }, comments: :user]).
         ransack(params[:q])
       @posts = @q.result(distinct: true).paginate(page: params[:page])
     else
       @q = Post.none.ransack
-      @posts = Post.all.includes([:spot, picture_attachment: :blob, user: { image_attachment: :blob }])
+      @posts = Post.all.includes([:like_users, :spot, picture_attachment: :blob, user: { image_attachment: :blob }])
     end
     @feed_items = @posts.paginate(page: params[:page])
     if user_signed_in?

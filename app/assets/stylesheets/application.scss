@@ -326,7 +326,8 @@ input {
   }
   .timestamp {
     color: $gray-light;
-    display: block;
+    display: flex;
+    justify-content: space-between;
     margin-left: 60px;
   }
   .icon {
@@ -336,6 +337,10 @@ input {
     img {
       border-radius: 50%;
     }
+  }
+  .under-btn {
+    display: flex;
+    justify-content: flex-end;
   }
 }
 
@@ -365,6 +370,16 @@ span.image {
   .display-image {
     width: 200px;
   }
+}
+
+/* like */
+
+.like-btn-like {
+  color: #dadada;
+}
+
+.like-btn-unlike {
+  color: #ff2581;
 }
 
 /* post form */

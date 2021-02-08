@@ -16,20 +16,23 @@
           = post.content
           = image_tag post.display_image if post.picture.attached?
         span.timestamp
+          div class="like-btn-#{post.id}"
+            = render "likes/like", post: post 
           = time_ago_in_words(post.created_at)+"前"
-          - if current_user == post.user
+        - if current_user == post.user
+          span.under-btn
             = link_to "編集", edit_post_path(post), class: "btn btn-link"
-            = link_to "削除", post, method: :delete, data: { confirm: "削除しますか？" }
-          .comment
-            h2 コメント
-            - if post.comments.any?
-              = render post.comments
-            - if user_signed_in?
-              =  form_with(model:[post, comment], local: true) do |f|
-                = f.label :content, "コメント"
-                = f.text_field :content, id: "comment-content"
-                = f.hidden_field :post_id, value: post.id
-                br
-                = f.submit 'コメントする'
+            = link_to "削除", post, method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-link delete-post"
+        .comment
+          h2 コメント
+          - if post.comments.any?
+            = render post.comments
+          - if user_signed_in?
+            =  form_with(model:[post, comment], local: true) do |f|
+              = f.label :content, "コメント"
+              = f.text_field :content, id: "comment-content"
+              = f.hidden_field :post_id, value: post.id
+              br
+              = f.submit 'コメントする'
     .modal-footer
     button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる
