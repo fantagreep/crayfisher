@@ -20,7 +20,8 @@
 #
 FactoryBot.define do
   factory :post do
-    association :user
     content { "MyText" }
+    association :user,
+      factory: :user
   end
 end

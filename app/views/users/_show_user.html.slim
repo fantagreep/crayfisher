@@ -30,5 +30,7 @@
               = post.content
               = image_tag post.display_image, class: "display-image" if post.picture.attached?
             span.timestamp
+              div class="like-btn-#{post.id}"
+                = render "likes/like", post: post 
               = time_ago_in_words(post.created_at)+"前"
         end
