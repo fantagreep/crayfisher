@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
   }
   resources :users, only: [:show] do
-    get :likes, on: :collection
+    get :likes, on: :member
   end
   get "users/:id/password_edit", to: "users#password_edit", as: 'password_edit'
   patch "users/:id/password_update", to: "users#password_update", as: 'password_update'

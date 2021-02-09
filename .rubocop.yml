@@ -17,3 +17,7 @@ Style/MixinUsage:
 Airbnb/DefaultScope:
   Exclude:
     - 'app/models/post.rb'
+
+# Instead of attr_name MyClass::MY_CONST, use attr_nameを許可
+Airbnb/FactoryAttrReferencesClass:
+  Enabled: false
