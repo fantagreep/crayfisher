@@ -34,6 +34,7 @@ JQueryを利用し、Googlemap上の吹き出しをクリックすれば投稿�
 
 #### レスポンシブ対応
 レスポンシブ対応を取り入れました。
+<br>
 ![ezgif.com-gif-maker (3).gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1059259/70c44c36-f982-7bc9-6fad-f5e4e5866cde.gif)
 
 * CircleCIによる継続的インテグレーション
