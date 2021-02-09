@@ -1,4 +1,4 @@
 - provide(:title, @user.name)
 
-= render "show_user", user: @user, posts: @posts
+= render "show_user", user: @user, posts: @posts, header: "投稿"
 = will_paginate @posts
