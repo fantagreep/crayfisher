@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def likes
     @user = User.find(params[:id])
-    @likes = @user.likes.includes([post: [{user: {image_attachment: :blob}}, :spot, :picture_attachment]])
+    @likes = @user.likes.includes([post: [{ user: { image_attachment: :blob } }, :spot, :picture_attachment]])
     @posts = []
     @likes.each do |like|
       @posts << like.post
