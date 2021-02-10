@@ -39,7 +39,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.1'
   gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
-  gem 'pg', '>= 0.18', '< 2.0'
+  # gem 'pg', '>= 0.18', '< 2.0'
 end
 
 group :development do
