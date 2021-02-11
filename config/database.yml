@@ -87,5 +87,5 @@ production:
   reconnect: false
   database: crayfisher_production
   username: root
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  password: Mongol800@
   socket: /var/lib/mysql/mysql.sock
