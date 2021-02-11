@@ -58,6 +58,7 @@ group :test do
 end
 
 group :production do
+  gem 'mysql2'
   gem 'unicorn', '5.4.1'
 end
 
