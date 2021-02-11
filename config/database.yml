@@ -86,7 +86,6 @@ production:
   encoding: utf8
   reconnect: false
   database: crayfisher_production
-  pool: 5
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
-  host: localhost
+  socket: /var/lib/mysql/mysql.sock
