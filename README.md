@@ -15,6 +15,9 @@ Qiita : https://qiita.com/mizuno_jin/items/af125a02fe6921725352
 
 - パスワード：foobar
 
+## インフラ設計
+![infrastructure](https://user-images.githubusercontent.com/69755367/108017092-668e4e80-7057-11eb-8a89-0e421458862f.png)
+
 ## 実装機能&使用している技術
 
 #### 地名による地図検索機能
