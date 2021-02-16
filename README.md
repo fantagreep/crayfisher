@@ -7,13 +7,16 @@ Crayfisherは子供の遊び場スポットを共有するサービスです。
 また、子供の頃よく行っていた遊び場があれば全国のお母さん、お父さんたちのために是非共有してください。
 
 Qiita : https://qiita.com/mizuno_jin/items/af125a02fe6921725352
-<br> URL : https://crayfisher.herokuapp.com/ 
+<br> URL : https://crayfisher-app.com/
 
 ログイン用
 
 - メールアドレス：example@example.com
 
 - パスワード：foobar
+
+## インフラ設計
+![infrastructure](https://user-images.githubusercontent.com/69755367/108017092-668e4e80-7057-11eb-8a89-0e421458862f.png)
 
 ## 実装機能&使用している技術
 
@@ -55,6 +58,7 @@ JQueryを利用し、Googlemap上の吹き出しをクリックすれば投稿�
 * Googlemap API
 * gem "bullet"を利用したN+1問題の検出・解決
 * sass, slimを使用した記述
+* AWS EC2を利用したサーバー構築
 * AWS S3を利用したクラウドストレージ
 * Google Analyticsによるアクセス解析
 
