@@ -70,24 +70,23 @@ jobs:
           name: Rspec
           command: bundle exec rspec
 
-  heroku_deploy:
+  deploy:
     docker:
-      - image: sue445/heroku-cli
+      - image: circleci/classic:edge
     steps:
       - checkout
+      - add_ssh_keys:
       - run:
           name: Deploy
-          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+          command: ssh ${USER_NAME}@${HOST_NAME} 'cd /var/www/crayfisher && git pull origin master'
       - run:
           name: Run post-deploy tasks
           command: |
-            heroku git:remote -a $HEROKU_APP_NAME
-            heroku config:set AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-            heroku config:set AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-            heroku config:set AWS_REGION=$AWS_REGION
-            heroku config:set AWS_BUCKET=$AWS_BUCKET
-            heroku run bin/rails db:migrate
-            heroku run bin/rails db:seed
+            export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+            export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+            export AWS_REGION=$AWS_REGION
+            export AWS_BUCKET=$AWS_BUCKET
+            bundle exec rails db:migrate RAILS_ENV=production
 
 orbs:
   ruby: circleci/ruby@0.1.2
