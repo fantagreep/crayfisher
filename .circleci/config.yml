@@ -97,7 +97,7 @@ workflows:
     jobs:
       - rubocop
       - rspec
-      - heroku_deploy:
+      - deploy:
           requires:
             - rspec
             - rubocop
