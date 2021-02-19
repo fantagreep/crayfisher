@@ -86,8 +86,7 @@ jobs:
             export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
             export AWS_REGION=$AWS_REGION
             export AWS_BUCKET=$AWS_BUCKET
-            gem install bundler
-            bundle install
+            rails credentials:edit
             bundle exec rails db:migrate RAILS_ENV=production
 
 orbs:
