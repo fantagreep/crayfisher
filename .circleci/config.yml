@@ -78,7 +78,7 @@ jobs:
       - add_ssh_keys:
       - run:
           name: Deploy
-          command: ssh ${USER_NAME}@${HOST_NAME} 'cd /var/www/crayfisher && git pull origin master'
+          command: ssh -o StrictHostKeyChecking=no ${USER_NAME}@${HOST_NAME} 'cd /var/www/crayfisher && git pull origin master'
       - run:
           name: Run post-deploy tasks
           command: |
