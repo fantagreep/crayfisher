@@ -71,8 +71,8 @@ jobs:
           command: bundle exec rspec
 
   deploy:
-    machine:
-      image: circleci/classic:edge
+    docker:
+      - image: circleci/ruby:2.5.8-node-browsers-legacy
     steps:
       - checkout
       - add_ssh_keys:
