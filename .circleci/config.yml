@@ -88,7 +88,7 @@ jobs:
             export AWS_BUCKET=$AWS_BUCKET
             gem install bundler
             bundle install
-            bundle exec rails credentilals:edit
+            bundle exec rails credentials:edit
             bundle exec rails db:migrate RAILS_ENV=production
 
 orbs:
