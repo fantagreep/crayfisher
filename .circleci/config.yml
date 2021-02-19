@@ -72,7 +72,7 @@ jobs:
 
   deploy:
     machine:
-      - image: circleci/classic:edge
+      image: circleci/classic:edge
     steps:
       - checkout
       - add_ssh_keys:
