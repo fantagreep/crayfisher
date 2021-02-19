@@ -71,12 +71,8 @@ jobs:
           command: bundle exec rspec
 
   deploy:
-    docker:
+    machine:
       - image: circleci/classic:edge
-        auth:
-          username: $DOCKER_USERNAME
-          password: $DOCKER_PASSWORD
-
     steps:
       - checkout
       - add_ssh_keys:
