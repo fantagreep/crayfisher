@@ -73,6 +73,7 @@ jobs:
   deploy:
     docker:
       - image: circleci/ruby:2.5.8-node-browsers-legacy
+      - image: circleci/mysql:5.7
     steps:
       - checkout
       - add_ssh_keys:
@@ -89,7 +90,6 @@ jobs:
             export AWS_BUCKET=$AWS_BUCKET
             gem install bundler
             bundle install
-            bundle exec rails db:migrate RAILS_ENV=production
 
 orbs:
   ruby: circleci/ruby@0.1.2
