@@ -73,7 +73,6 @@ jobs:
   deploy:
     docker:
       - image: circleci/ruby:2.5.8-node-browsers-legacy
-      - image: circleci/mysql:5.7
     steps:
       - checkout
       - add_ssh_keys:
