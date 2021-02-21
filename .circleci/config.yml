@@ -89,6 +89,8 @@ jobs:
             export AWS_BUCKET=$AWS_BUCKET
             gem install bundler
             bundle install
+            ps ax | grep mysql
+            sudo service mysqld status
             sudo service mysqld start
             bundle exec rails db:migrate RAILS_ENV=production
 
