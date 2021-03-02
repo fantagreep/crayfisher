@@ -33,6 +33,7 @@ gem "dotenv-rails"
 gem 'ransack'
 gem 'counter_culture', '~> 1.8'
 gem 'turbolinks', '~> 5'
+gem 'foreman'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
