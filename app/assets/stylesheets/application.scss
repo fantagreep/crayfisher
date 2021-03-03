@@ -112,13 +112,18 @@ p {
 
 .navbar-nav {
   margin: 0 0 0 auto !important;
-  .nav-item {
-    margin-left: 10px;
-    margin-right: 10px;
-    .nav-link {
-      color: #f6f6f6 !important;
-    }
-  }
+}
+
+.nav-item {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.nav-link {
+  color: #f6f6f6 !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  line-height: 20px;
 }
 
 .hamburger {

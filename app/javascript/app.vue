@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header-component />  // ヘッダーコンポーネント   
+    <header-component />
     <v-main>
       <router-view /> // routes.jsに設定したコンポーネントが描画される
     </v-main>
