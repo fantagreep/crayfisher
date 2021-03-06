@@ -2,10 +2,10 @@
   <div>
     <header-component />
     <v-main>
-      <router-view /> // routes.jsに設定したコンポーネントが描画される
+      <router-view />
     </v-main>
     <v-footer>
-      <footer-component />　// フッターコンポーネント
+      <footer-component />
     </v-footer>
   </div>
 </template>
