@@ -5,6 +5,10 @@
 .posts
   = render '/posts/modal', post: @post, comment: @comment
 
+.js-post
+  p v-text="postInfo.context"
+= javascript_pack_tag 'post'
+
 javascript:
   <script>
     $('#myModal').on('shown.bs.modal', function () {

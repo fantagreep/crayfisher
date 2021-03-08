@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="home-page">
     <div class="map-wrapper" data-turbolinks='false'>
       <div id="map" class="gmap"></div>
     </div>
@@ -29,8 +29,7 @@
         <h3 id="feed-header">最近の投稿</h3>
         = render 'shared/feed', user: @user
         <div class="posts">
-          - @spots.each do |spot|
-            = render '/posts/modal', post: spot.post, comment: @comment
+          {{ allPosts }}
         </div>
       </div>
     </div>
@@ -38,6 +37,24 @@
   </div>
 </template>
 
+<!--
 <script>
+  import Vue from 'vue';
+  import axios from 'axios';
 
+  new Vue({
+    el: '#home-page',
+    data: {
+      allPosts: {},
+    },
+    methods: {
+      setAllPosts(id){
+        axios.get(`/api.json`)
+          .then(res => {
+            this.allPosts = res.data;
+          });
+      }
+    }
+  });
 </script>
+-->
